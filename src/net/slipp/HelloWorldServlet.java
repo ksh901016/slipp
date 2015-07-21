@@ -1,12 +1,16 @@
 package net.slipp;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+@WebServlet("/helloworld")
 public class HelloWorldServlet extends HttpServlet {
 	// private String name; 필드에서 개발하면안됨
 
@@ -17,5 +21,7 @@ public class HelloWorldServlet extends HttpServlet {
 		String name = req.getParameter("name");
 		System.out.println("Request Success!!");
 		resp.getWriter().print(name + " Hello World from Servlet!!"); //ctrl+6 서버 재시작
+		
+		PrintWriter out = resp.getWriter();
 	}
 }
