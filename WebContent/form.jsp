@@ -31,12 +31,6 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="password">비밀번호</label>
-						<div class="controls">
-							<input type="password" id="password" name="password" placeholder="" />
-						</div>
-					</div>
-					<div class="control-group">
 						<label class="control-label" for="password">이름</label>
 						<div class="controls">
 							<input type="text" id="name" name="name" placeholder="" />
