@@ -6,14 +6,11 @@
 	String userId = request.getParameter("userId");
 	String password = request.getParameter("password");
 	
-	User user = Database.findByUserId(userId);
-	if(user == null){
-		
-		// 사용자가 존재하지 않는다는 것을 에러 메시지 전송
+	if(User.login(userId, password)){
+		//상태정보들을 유지하고싶을때 사용할수 있는 것 -> session
+        //HTTP 프로토콜 상태에서는 웹페이지를 이동할때 데이터 유지 불가 -> 세션을통해 데이터유지
+		session.setAttribute("userId", userId);
 	}
 	
-	if(password.equals(user.getPassword())){
-		// 로그인 처리
-	}
-	
+	response.sendRedirect("/");
 %>
