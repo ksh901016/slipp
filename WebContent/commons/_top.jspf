@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -18,23 +19,17 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-<%
-	Object userId = session.getAttribute("userId");
-%>
 			<li><a href="#">Home</a></li>
-<%
-    if(userId == null){
-%>
-			<li><a href="/login.jsp">로그인</a></li>
-			<li><a href="/form.jsp">회원가입</a></li>
-<%
-    }   else{
-%>
-			<li><a href="/users/logout">로그아웃</a></li>
-			<li><a href="#">개인정보수정</a></li>
-<%
-    }
-%>
+			<c:choose>
+				<c:when test="${not empty userId }">
+					<li><a href="/users/logout">로그아웃</a></li>
+					<li><a href="#">개인정보수정</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="/login.jsp">로그인</a></li>
+					<li><a href="/form.jsp">회원가입</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
